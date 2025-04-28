@@ -1,7 +1,7 @@
 import React from "react";
 import TypeWriter from "../components/Typewriter.jsx";
 
-const typeWriter = ["Good Morning! Sharon Johnson!"];
+const typeWriter = ["നമസ്കാരം!, ഷാരോൺ ജോൺസൺ"];
 
 function Greeting() {
   return (
