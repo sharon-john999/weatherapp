@@ -5,8 +5,12 @@ import Weather from "./Weather";
 function App() {
   return (
     <div>
+      <div>
       <Weather />
+      </div>
+      <div>
       <Greeting />
+      </div>
     </div>
   );
 }

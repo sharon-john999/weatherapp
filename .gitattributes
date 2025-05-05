@@ -1,0 +1,38 @@
+# Set the default behavior for all text files
+* text=auto
+
+# Ensure consistent line endings (LF) for common web and JavaScript files
+*.js text eol=lf
+*.jsx text eol=lf
+*.ts text eol=lf
+*.tsx text eol=lf
+*.json text eol=lf
+*.html text eol=lf
+*.css text eol=lf
+*.scss text eol=lf
+*.less text eol=lf
+*.md text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.lock text eol=lf        # For package-lock.json and yarn.lock
+
+# Handle Windows-specific files with CRLF if necessary (less common in modern web projects)
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Mark binary files to prevent Git from trying to modify line endings
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.svg binary
+*.ico binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.eot binary
+*.otf binary
+*.zip binary
+*.tar binary
+*.gz binary
+*.map binary       # Source maps are often treated as binary
