@@ -1,8 +1,9 @@
 import React from "react";
 import Greeting from "./Greeting";
 import Weather from "./Weather";
-import CreditCardForm from "./CreditCardForm";
+import CardForm from "./CardForm";
 import FloatingActionButtons from "./FloatingActionButton";
+import FAB from "./FAB";
 
 function App() {
   return (
@@ -14,9 +15,8 @@ function App() {
       <Greeting />
       </div>
       <div>
-        <CreditCardForm />
+        <FAB />
       </div>
-      <FloatingActionButtons />
     </div>
   );
 }
