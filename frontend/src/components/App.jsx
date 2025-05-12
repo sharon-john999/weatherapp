@@ -9,7 +9,7 @@ function App() {
   return (
     <div>
       <div>
-      <Weather bg='public/images/summer.mp4'/>
+      <Weather/>
       </div>
       <div>
       <Greeting />
