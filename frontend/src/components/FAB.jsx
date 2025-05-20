@@ -3,11 +3,9 @@ import Card from '@mui/joy/Card';
 import CardActions from '@mui/joy/CardActions';
 import CardContent from '@mui/joy/CardContent';
 import Checkbox from '@mui/joy/Checkbox';
-import Divider from '@mui/joy/Divider';
 import FormControl from '@mui/joy/FormControl';
 import FormLabel from '@mui/joy/FormLabel';
 import Input from '@mui/joy/Input';
-import Typography from '@mui/joy/Typography';
 import Button from '@mui/joy/Button';
 import { InputLabel, MenuItem, Select } from '@mui/material';
 import Box from '@mui/material/Box';
@@ -19,16 +17,54 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import { useState } from 'react';
 
 export default function FAB() {
     const [open, setOpen] = React.useState(false);
-    const [fertilizerType, setFertilizerType] = React.useState('');
-    const [method, setMethod] = React.useState('');
+    const [formData, setFormData] = useState({
+        plantname: '',
+        dateAdded:'',
+        fertilizername: '',
+        fertilizertype: '',
+        fertilizermethod: '',
+        planttype: '',
+        fertilizerquantity: '',
+    });
 
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
-    const handleFertilizerChange = (e) => setFertilizerType(e.target.value);
-    const handleMethod = (e) => setMethod(e.target.value);
+
+    const addCrop = async () => {
+  try {
+    const response = await fetch("http://localhost:5000/api/crops", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(formData)
+    });
+
+    if (response.ok) {
+      alert("Crop added successfully");
+      setOpen(false);  // Close dialog
+      setFormData({
+        plantname: '',
+        dateAdded: '',
+        fertilizername: '',
+        fertilizertype: '',
+        fertilizermethod: '',
+        planttype: '',
+        fertilizerquantity: '',
+      });
+    } else {
+      alert("Failed to add crop");
+    }
+  } catch (error) {
+    console.error("Error:", error);
+    alert("Error adding crop");
+  }
+};
+
 
     return (
         <React.Fragment>
@@ -40,10 +76,7 @@ export default function FAB() {
                         <AddIcon />
                     </Fab>
             </Box>
-            {/*
-          <Button variant="outlined" onClick={handleClickOpen}>
-            Open form dialog
-          </Button>    */}
+
             <Dialog
                 open={open}
                 onClose={handleClose}
@@ -71,20 +104,57 @@ export default function FAB() {
                             }}>
 
                             <FormControl sx={{ gridColumn: '1/-1' }}>
-                                <FormLabel>Plant Name</FormLabel>
-                                <Input />
+                                <FormLabel>Crop Name</FormLabel>
+                                <Input 
+                                name='plantname'
+                                value={formData.plantname}
+                                onChange={(e) => setFormData({ ...formData, plantname: e.target.value})}
+                                />
                             </FormControl>
 
                             <FormControl sx={{ gridColumn: '1/-1' }}>
                                 <FormLabel>Fertilizer name</FormLabel>
-                                <Input />
+                                <Input 
+                                name='fertilizername'
+                                value={formData.fertilizername}
+                                onChange={(e) => setFormData({ ...formData, fertilizername: e.target.value})}
+                                
+                                />
+                            </FormControl>
+
+                            < FormControl>
+                                < FormLabel>Crop Type </FormLabel>
+                                <Select
+                                    value={formData.planttype}
+                                    onChange={(e) => setFormData({ ...formData, planttype: e.target.value})}
+                                    size="small"
+                                    sx={{ mt: 1 }}
+
+                                >
+                                    <MenuItem value="Food Crop">Food Crop</MenuItem>
+                                    <MenuItem value="Feed Crop">Feed Crop</MenuItem>
+                                    <MenuItem value="Fiber Crop">Fiber Crop</MenuItem>
+                                    <MenuItem value="Oil Crop">Oil Crop</MenuItem>
+                                    <MenuItem value="Industrial Crop">Industrial Crop</MenuItem>
+                                </Select>
+                            
+                            </FormControl>
+
+                            <FormControl>
+                                < FormLabel>Fertilizer Quantity (in Kg)</FormLabel>
+                                <Input
+                                value={formData.fertilizerquantity}
+                                onChange={(e) => setFormData({ ...formData, fertilizerquantity: e.target.value})}
+                                size="md"
+                                sx={{ mt: 1 }}
+                                ></Input>
                             </FormControl>
 
                             <FormControl>
                                 <FormLabel>Fertilizer Type</FormLabel>
                                 <Select
-                                    value={fertilizerType}
-                                    onChange={handleFertilizerChange}
+                                    value={formData.fertilizertype}
+                                    onChange={(e) => setFormData({ ...formData, fertilizertype: e.target.value})}
                                     size="small"
                                     sx={{ mt: 1 }}
                                 >
@@ -96,20 +166,21 @@ export default function FAB() {
                             <FormControl>
                                 <FormLabel>Method</FormLabel>
                                 <Select
-                                    value={method}
-                                    onChange={handleMethod}
+                                    value={formData.fertilizermethod}
+                                    onChange={(e) => setFormData({ ...formData, fertilizermethod: e.target.value})}
                                     size="small"
                                     sx={{ mt: 1 }}
                                 >
-                                    <MenuItem value="soilInjection">Soil Injection</MenuItem>
-                                    <MenuItem value="spray">Surface Spraying</MenuItem>
-                                    <MenuItem value="droneSpray">Drone Spray</MenuItem>
+                                    <MenuItem value="Broadcasting">Broadcasting</MenuItem>
+                                    <MenuItem value="Placement">Placement</MenuItem>
+                                    <MenuItem value="Foliar">Foliar</MenuItem>
+                                    <MenuItem value="Fertigation">Fertigation</MenuItem>
+                                    <MenuItem value="Aerial">Aerial</MenuItem>
                                 </ Select>
                             </ FormControl>
 
-                            <Checkbox label="Micro-nutrient" sx={{ gridColumn: '1/-1', my: 1 }} />
                             <CardActions sx={{ gridColumn: '1/-1' }}>
-                                <Button variant="solid" color="primary">
+                                <Button variant="solid" color="primary" onClick={addCrop}>
                                     Add crop
                                 </Button>
                                 <Button onClick={handleClose} variant='outlined' color='neutral'>

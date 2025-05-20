@@ -16,7 +16,7 @@ export function useWeatherData() {
         let video;
         let description;
 
-        if ([4200, 4001, 1101].includes(weatherCode)) {
+        if ([4200, 4001, 1101, 4000].includes(weatherCode)) {
           video = "/images/rain.mp4";
           description = "Light Rain";
         } else if ([1001, 1102].includes(weatherCode)) {
