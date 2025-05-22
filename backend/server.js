@@ -4,6 +4,7 @@ import 'dotenv/config';
 import cors from 'cors';
 import dbRoute from './routes/dbRoute.js'
 import fetchWeatherOnce from './routes/weatherRoute.js';
+import geminiRoute from './routes/geminiRoute.js';
 
 const app = express();
 app.use(cors());
@@ -15,6 +16,8 @@ mongoose.connect(process.env.MONGO_URI)
 
 fetchWeatherOnce();
 app.use('/api/crops', dbRoute);
+
+app.use('/api/gemini', geminiRoute);
 
 const PORT = process.env.PORT;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

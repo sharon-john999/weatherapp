@@ -8,6 +8,7 @@ const cropSchema = new mongoose.Schema({
     dateAdded:{
         type: Date,
         default: Date.now,
+        expires: 60*60*24*15,
     },
     fertilizername: {
         type: String,
