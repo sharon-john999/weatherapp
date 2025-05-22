@@ -45,7 +45,6 @@ export default function FAB() {
     });
 
     if (response.ok) {
-      alert("Crop added successfully");
       setOpen(false);  // Close dialog
       setFormData({
         plantname: '',

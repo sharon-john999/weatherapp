@@ -42,7 +42,7 @@ class TypeWriter extends React.PureComponent {
   }
 
   render() {
-    return <span className="typewriter">{this.state.text}</span>;
+    return <span>{this.state.text}</span>;
   }
 }
 

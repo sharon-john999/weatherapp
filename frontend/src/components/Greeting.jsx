@@ -1,11 +1,11 @@
 import React from "react";
 import TypeWriter from "../components/Typewriter.jsx";
 
-const typeWriter = ["നമസ്കാരം!, ഷാരോൺ ജോൺസൺ"];
+const typeWriter = ["Hello!, Sharon Johnson"];
 
 function Greeting() {
   return (
-    <div className="App">
+    <div>
       <div className="typewriter-holder">
         <p>
           <TypeWriter data={typeWriter} />

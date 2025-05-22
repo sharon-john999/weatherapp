@@ -1,65 +1,22 @@
-body {
-  margin: 0;
-  font-family: 'malayalam', sans-serif;
-}
-
-.app {
-  display: flex;
-  height: 100vh;
-}
-
-.sidebar {
-  width: 200px;
-  background-color: #101225;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.sidebar ul {
-  list-style: none;
-  padding: 0;
-}
-
-.sidebar li {
-  margin: 1rem 0;
-  cursor: pointer;
-}
-
-.main-content {
-  flex: 1;
-  padding: 2rem;
-  overflow-y: auto;
-}
-
-.current-weather, .today-forecast, .air-conditions, .weekly-forecast {
-  background-color: #16182e;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  border-radius: 10px;
-}
 
 .typewriter-holder {
   font-family: "IBM Plex Sans", sans-serif;
   font-weight: 400;
   font-size: 35px;
   color: white;
-  margin-top: 10px ;
   border-radius: 20px;
-  padding: 10px 10px;
   z-index: 1;
-  position:absolute;
-  background-color: rgba(145, 127, 127, 0.2) ;
-
-  width: 450;
-  
+  position:relative;
+  width: 100px;
+  margin-top: 0;
   display:inline;
-  left: 20px;
+  left: 30px;
+  right: 40px;
+  background-color: rgba(145, 127, 127, 0.2) ;
 }
 
 .background-video {
-  position: absolute; 
+  position: fixed; 
   top: 0;
   left: 0;
   width: 100%;
@@ -69,14 +26,13 @@ body {
   z-index: -1; 
 }
 
-.crop-card{
+.organic-crop-card{
   z-index: 1;
   border-radius: 25px;
   position: relative;
   padding: 25px 15px;
-  background-color: #47FF5B;
+  background-color: #4FFC4A;
   margin: 15px;
-  height: 200px;
   box-shadow: 0 2px 5px #ffdfdf;
   width: 400px;
   height: 150px;
@@ -99,16 +55,18 @@ body {
   width: 80px;
   height: 80px;
   margin-left: 300px;
-  position: absolute;
+  position: relative;
   bottom: 80px;
-  top: 15px;
 }
 
 .plant-description {
-  font-size: small;
+  position: relative;
+  top: 5px;
+  font-size:smaller;
   padding-left: 0;
   display:list-item;
   margin-left: 20px;
+  font-family: "IBM Plex Sans";
 }
 
 
@@ -117,12 +75,171 @@ body {
   background-color: #F9F7DD;
   box-shadow: 0 2px 5px #ffffff;
   border-radius: 10px;
-  position: absolute;
+  position: relative;
   width: 400px;
   height: 90px;
+  bottom: 100px;
 }
 
 .fertilizer-name {
   margin-top: 5px;
   margin-bottom: 10px;
+}
+
+.inorganic-crop-card{
+  z-index: 1;
+  border-radius: 25px;
+  position: relative;
+  padding: 25px 15px;
+  background-color: #fc4a4f;
+  margin: 15px;
+  height: 200px;
+  box-shadow: 0 2px 5px #ffdfdf;
+  width: 400px;
+  height: 150px;
+
+
+}
+
+.inorganic-card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; 
+  justify-content: space-between;
+  /*flex-wrap: wrap;*/
+}
+
+.card-table {
+  display: grid;
+  grid-template-columns: 1fr 1fr; 
+  gap: 20px 180px; 
+  padding: 20px;
+  justify-items: stretch; 
+}
+
+.card-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;  
+  align-items: flex-start;
+  flex-wrap: wrap;              
+  gap: 15px; 
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 0.5fr; /* Two equal columns */
+  gap: 0; /* No space between columns */
+  width: 100%;
+  min-height: 50px;
+}
+
+.organic-card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* <-- Left align cards */
+  justify-content: space-between;
+  /*flex-wrap: wrap;*/
+}
+
+.chat-container {
+  max-width: 700px;
+  margin: 20px auto;
+  font-family: Arial, sans-serif;
+  margin-left: 750px;
+  position: absolute  ;
+  top: 300px;
+  right: 300px;
+}
+
+.chat-box {
+  height: 300px;
+  overflow-y: auto;
+  background-color: rgba(27, 22, 22, 0.2) ;
+  border-radius: 10px;
+  border-color: #000000;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 600px;
+  padding-right: 20px;
+}
+
+.bubble {
+  padding: 10px 15px;
+  border-radius: 15px;
+  max-width: 100%;
+  word-wrap: break-word;
+}
+
+.bubble.user {
+  align-self: flex-end;
+  background-color: #dcf8c6;
+}
+
+.bubble.ai {
+  padding-left: 5px;
+  align-self: flex-start;
+  background-color: #e0e0e0;
+}
+
+.input-area {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.input-area input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.input-area button {
+  padding: 10px 20px;
+  border: none;
+  background: #4285f4;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+
+
+
+
+.scroll-container {
+  height: 230px; 
+  overflow-y:auto;
+} 
+
+
+.scroll-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 10px;
+}
+
+.scroll-container::-webkit-scrollbar-track {
+  background: #222;
+}
+
+.crop-portfolio {
+  font-family: "IBM Plex Sans", sans-serif;
+  border-radius: 20px;
+  color: white;
+  position: absolute;
+  margin-left: 20px;
+  margin-top: 250px;
+  padding: 20px 20px;
+  z-index: 1;
+  position: relative;
+  background-color: rgba(145, 127, 127, 0.2) ;
+  font-size: large; 
+  font-weight: 500; 
+  width: 250px;
 }

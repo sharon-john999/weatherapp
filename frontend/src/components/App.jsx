@@ -1,26 +1,26 @@
-import React from "react";
 import Greeting from "./Greeting";
 import Weather from "./Weather";
-//import FloatingActionButtons from "./FloatingActionButton";
 import FAB from "./FAB";
-//import CropCard from "./CropCard";
 import CropFetch from "./cropFetch";
+import GeminiChat from "./GeminiChat";
 
 function App() {
   return (
     <div>
       <div>
-      <Weather/>
+        <Weather/>
       </div>
       <div>
-      <Greeting />
+        <Greeting />
       </div>
       <div>
         <FAB />
       </div>
-      {/* <CropCard />*/}
+      <h3 className="crop-portfolio">Your Crop Portfolio</h3>
       <CropFetch />
+      <GeminiChat />
     </div>
+
   );
 }
 
